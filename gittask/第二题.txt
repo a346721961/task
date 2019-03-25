@@ -1,0 +1,2 @@
+
+git rm --cached 和 git rm -f 的区别使用git rm --cached 可对已经添加到暂存区的文件进行删除，如果不急--cached则会提示文件已经放入暂存区无法进行删除（git rm 的区别）对于git rm -f 也可以对暂存区文件进行删除但同时也会对源文件实行删除。总：git 入门--cached 和 git rm -f 都可对暂存区文件进行删除，但是git rm -f 会将源文件删除

@@ -1,0 +1,1 @@
+ git log --before="2018-10-20" --since="2018-10-1" --graph
