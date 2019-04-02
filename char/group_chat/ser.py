@@ -17,9 +17,10 @@ def conn_recv(conn, conn_addr, a):
             # return_msg = "已经收到你的消息--->" + msg
             # sg = return_msg.encode()
 
-            # a.append(return_msg)
+            a.append(return_msg)
+            for i in a:
 
-            conn.send(return_msg.encode())
+                conn.send(i.encode())
             print(type(a))
         except Exception:
             break
@@ -45,7 +46,7 @@ while 1:
 
 
 
-    t = Thread(target=conn_recv,args=(conn,conn_addr, a == None))
+    t = Thread(target=conn_recv,args=(conn,conn_addr, a))
     t.start()
 
 

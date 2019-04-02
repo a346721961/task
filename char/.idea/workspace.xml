@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a5eecaa-4bd6-4630-a632-1220dc34b149" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../zhangxun/第二题.png" beforeDir="false" afterPath="$PROJECT_DIR$/../zhangxun/第二题.png" afterDir="false" />
-    </list>
+    <list default="true" id="3a5eecaa-4bd6-4630-a632-1220dc34b149" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/group_chat/ser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="163">
               <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -244,10 +242,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.cli" />
+        <item itemvalue="Python.cli1 (1)" />
         <item itemvalue="Python.cli2" />
         <item itemvalue="Python.ser" />
-        <item itemvalue="Python.cli1 (1)" />
-        <item itemvalue="Python.cli" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -347,7 +345,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/group_chat/ser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="163">
           <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
