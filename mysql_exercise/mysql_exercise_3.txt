@@ -1,0 +1,37 @@
+1.查询年龄在25至30岁之间的男员工姓名和住址
+SELECT y_name , y_adderss FROM staff  WHERE 25 < y_age  AND y_age < 30;
+2.查询财务部所有40岁以下的男员工的所有信息
+SELECT * FROM staff WHERE b_id = (SELECT b_id FROM department WHERE b_name = '财务部');
+3.查询人事部年龄最大的女员工
+SELECT * 
+FROM
+	( SELECT * FROM staff WHERE b_id = ( SELECT b_id FROM department WHERE b_name = '人事部' ) AND y_sex = '女' ) a 
+WHERE
+	y_age = ( SELECT MAX( y_age ) FROM staff WHERE b_id = ( SELECT b_id FROM department WHERE b_name = '人事部' ) AND y_sex = '女' );
+4.2号新到一名员工，已知姓名，性别，年龄，将此员工加入到员工表
+INSERT INTO staff (y_name,y_sex,y_age) VALUES ('徐广坤','男','100');
+5.在员工表中，将人事部年龄大于30岁的女同事，调到后勤部
+UPDATE staff 
+SET b_id = ( SELECT b_id FROM department WHERE b_name = '后勤部' ) 
+WHERE
+	b_id = ( SELECT b_id FROM department WHERE b_name = '人事部' ) 
+	AND y_sex = '女' 
+	AND y_age > 30;
+
+6.查询每个部门年龄最大的员工，显示部门名字和年龄
+
+7.查询每个部门多少人，显示部门名字和人数，按人数排序，如果人数相同，按照部门编号排序
+SELECT b_name,COUNT(*) FROM department JOIN staff ON department.b_id = staff.b_id GROUP  BY staff.b_id,department.b_id;
+8.将张三改为李四并调回财务部
+UPDATE staff SET y_name = '李四',b_id = 2 WHERE y_name='张三';
+9.将后勤部年龄大于60岁的员工删除
+DELETE FROM staff WHERE y_age > 60 AND b_id = (SELECT b_id FROM department WHERE b_name = '后勤部');
+10.查询财务部年龄不在20-30之间的男生信息
+SELECT
+	* 
+FROM
+	staff 
+WHERE
+	b_id = ( SELECT b_id FROM department WHERE b_name = '财务部' ) 
+	AND y_age > 30 
+	AND y_age < 20;

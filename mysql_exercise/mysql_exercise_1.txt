@@ -1,0 +1,56 @@
+1.创建Student和score表
+
+CREATE TABLE `test`.`Student`  (
+  `id` int(10) NOT NULL COMMENT '学号' FIRST,
+  `Name` varchar(20) NULL COMMENT '姓名',
+  `Sex` varchar(4) NULL COMMENT '性别',
+  `Birth` year NULL COMMENT '出生年份',
+  `Department` varchar(20) NULL COMMENT '院系',
+  `Address` varchar(50) NULL COMMENT '家庭住址',
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE `test`.`Score`  (
+  `Id` int(10) NOT NULL COMMENT '编号' FIRST,
+  `Stu_id` int(10) NOT NULL COMMENT '学号',
+  `C_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '课程名',
+  `Grade` int(10) NULL DEFAULT NULL COMMENT '分数',
+  PRIMARY KEY (`Id`)
+);
+
+2.为Student和score表添加记
+INSERT INTO Student VALUES('101','杨璐','女','1995','信息工程','河南省商丘市');
+INSERT INTO Score VALUES('1','101','计算机','89');
+
+3.查询student表的所有记录
+select * from Student
+4.查询Student表的第二条到第四条数据
+SELECT * FROM Student LIMIT 1,3;
+5.从student表中查询所有学生的学号（id）、姓名（name）、和院系信息
+select id,name,department from Student;
+6.查询表中计算机系和英语系的学生
+select * from Student where Department='计算机系' or Department = '英语系';
+7.从student表中查询年龄18-22岁的学生信息
+select * from Student where 18< 2019-Birth < 22;
+8.从student表中查询出每个院系多少人
+select Department,COUNT(Department) as Departmentsum from Student GROUP BY Department;
+10.查询李四的考试科目（C_name）和考试成绩（grade）
+select C_name,Grade from Score where Stu_id=(select id from Student where Name='李四')
+11.用链接方式查询所有学生的信息和考试成绩
+SELECT * FROM Student JOIN Score on Student.Id = Score.Stu_id;
+12.计算每个学生的总成绩
+SELECT Name,sum(Grade) as scoresum FROM Student JOIN Score on Student.Id = Score.Stu_id GROUP BY `Name`;
+13.计算每个考试科目的平均成绩
+SELECT C_name,AVG(Grade) as Grade FROM Student JOIN Score on Student.Id = Score.Stu_id GROUP BY C_name;
+14.查询计算机成绩低于95的学生信息
+SELECT * FROM Student WHERE Id IN (SELECT Stu_id FROM ( SELECT * FROM Score WHERE C_name = '计算机' ) a);
+15.查询同时进行计算机和英语考试的学生信息
+SELECT Student.* FROM Student JOIN Score ON Stu_id = Student.id WHERE C_name = '计算机' OR C_name = '英语' GROUP BY Stu_id HAVING COUNT(*) = 2;
+16.将计算机考试成绩按从高到低进行排序
+SELECT * from Score WHERE C_name = '计算机' ORDER BY Grade DESC;
+18.查询姓张或者姓王的同学的姓名、院系和考试科目及成绩
+SELECT `Name`,Department,C_name,Grade from Student JOIN Score ON Student.id = Score.Stu_id WHERE Student.Name REGEXP '张|王.';
+19.查询都是湖南的学生的姓名、年龄、院系和考试科目及成绩
+SELECT `Name`,(2019-Birth) AS age,Department,C_name,Grade from Student JOIN Score ON Student.id = Score.Stu_id WHERE Student.Address REGEXP '湖南{0,}';
+20.把张三的姓名改为张三丰，课程改为java分数100
+UPDATE Student,Score SET Student.`Name`='张三丰', Score.C_name='java', Score.Grade = 100 WHERE Student.`Name`= '张三' AND Student.id = Score.Stu_id;
+

@@ -1,0 +1,24 @@
+1.写出sql语句，查询所有年龄大于20岁的员工
+SELECT * FROM employee WHERE age > 20;
+2.写出sql语句，查询所有年龄小于25岁的女性员工
+SELECT * FROM employee WHERE age < 25 AND Sex = '女';
+3.学出sql语句，统计男女员工各多少名
+SELECT Sex,COUNT(*) AS sum FROM employee GROUP BY Sex;
+4.写出sql语句，按照年龄倒叙获取员工信息
+SELECT * FROM employee ORDER BY age DESC;
+5.写出sql语句，按照员工中那个姓名有重名现象
+SELECT * FROM (SELECT `Name`,COUNT(*) as namesum FROM employee GROUP BY `Name`) as a WHERE namesum >= 2;
+6.写入sql语句，查询所有姓张的员工
+SELECT * FROM employee WHERE `Name` REGEXP '^张.';
+7.写出sql语句，查询住址为北京的前3条记录
+SELECT * FROM employee WHERE Address ='北京' LIMIT 3;
+8.写出sql语句查询员工总数
+SELECT COUNT(*) FROM employee;
+9.写sql语句，向表中插入一条记录
+INSERT INTO employee (`Name`,Sex, age , Address) VALUES('赵八','男',23,'河南');
+10.写出sql语句，修改员工张四的地址为南京
+UPDATE employee SET Address = '南京' WHERE `Name` = '张四';
+11.写出sql语句，删除年龄大于24的女员工
+DELETE FROM employee WHERE Sex='女' AND age > 24;
+
+

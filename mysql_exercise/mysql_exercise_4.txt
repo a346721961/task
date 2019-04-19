@@ -1,0 +1,45 @@
+1.查询所有年龄在20下的学生姓名和年龄
+select sname, age from S wherw age < 20;
+2.查询成绩不及格的学生的学号
+select Sno from sc where grade <60;
+3.查询年龄在20-23岁之间的学会少年宫姓名、性别
+select sname, sdept,age from S age <20 and age>23;
+4.查计算机系、数学系、信息系的学生姓名、性别
+SELECT sname,sex FROM S WHERE sdept in ('计算机系','数学系','信息系');
+5.查询既不是计算机系、数学系、也不是信息系的学生姓名、性别
+SELECT sname,sex FROM S WHERE sdept not in ('计算机系','数学系','信息系');
+6.查询所有姓刘的学生姓名学号性别
+select sname,sno,sex from S WHERE sname REGEXP '^刘.'
+7.查姓‘上官’且全名为三个汉字的学生姓名。
+select sname from S WHERE sname LIKE '上官_';
+8.查询所有不姓张的学生姓名
+select sname from S WHERE sname not REGEXP '^张.';
+9.查询DB_Design课程编号
+select cno from C where cname = 'DB_Design';
+10。查缺考的学生学号和课程号
+select sno,cno from SC where grade is null;
+11.查询年龄为空值得学生学号和姓名
+select sno, sname from S where age is null;
+12.查询计算机系20岁以下的学生学号和姓名
+select sno,sname from S where age<20 and sdept = '计算机系';
+13.查计算机系、数学系、信息系的学生姓名、性别
+SELECT sname,sex FROM S WHERE sdept in ('计算机系','数学系','信息系');
+14.查选修了C3课程的学生学号和成绩，其结果按分数的降序排序
+select sno,grade from SC where cno='C3' order by Grade DESC;
+15.查询全体学生的情况，查询结果安所在系的升序排序，对统一系中的学生按照年龄的降序排序
+select * from S order by sdep, sage,DESC;
+16：查询学生总人数。
+select count(*) from S;
+17：查询选修了课程的学生人数。
+select count(sno) from SC;
+18：计算选修了C1课程的学生平均成绩。
+select AVG (grade) from SC where cno = 'C1';
+19：查询学习C3课程的学生最高分数。
+select max (grade) from SC where cno = 'C3';
+20：查询各个课程号与相应的选课人数。
+select cno,count(sno) from SC group by cno;
+21：查询计算机系选修了3门以上课程的学生的学号。
+select sno from SC where group by sno having count(*) >3;
+22：求基本表S中男同学的每一年龄组（超过50人）有多少人？要求查询结果按人数升序排列，人数相同按年龄降序排列。 
+q
+
