@@ -1,4 +1,4 @@
-1.创建Student和score表
+4.查询Student表的第二条到第四条数据1.创建Student和score表
 
 CREATE TABLE `test`.`Student`  (
   `id` int(10) NOT NULL COMMENT '学号' FIRST,

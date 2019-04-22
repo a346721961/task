@@ -1,0 +1,13 @@
+1.
+2.SELECT name, bonus
+FROM employee LEFT JOIN bonus USING (empId)
+WHERE IFNULL(bonus, 0) < 1000;
+3. SELECT NAME FROM salesperson WHERE sales_id NOT IN (
+SELECT sales_id FROM `order` WHERE com_id=(
+SELECT com_id FROM company WHERE NAME='RED'));
+4.
+5.SELECT NAME FROM Candidate WHERE id=(
+SELECT MAX(sums) FROM (
+SELECT CandidateId,COUNT(CandidateId) AS sums FROM Vote GROUP BY CandidateId) b);
+
+
